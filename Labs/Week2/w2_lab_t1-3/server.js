@@ -32,7 +32,6 @@ http
         msg = `The result of ${x} - ${y} is ${result}`;
         res.end(msg);
         return;
-        break;
       default:
         return; // if a request with unknown pathname arrives, simply ignore it.
       // case "/favicon.ico": //when we are requesting for the icon
