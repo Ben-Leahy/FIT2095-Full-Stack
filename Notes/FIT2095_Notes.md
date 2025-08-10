@@ -34,6 +34,8 @@ let, const are block scope. const is function scope
 
 `npm i` This command will install everything listed in your package.json file which will automatically track all the modules you install.
 
+`npm init` sets up the package.json file
+
 ## Week 1
 
 ### Mean stack
