@@ -78,8 +78,12 @@ app.get("/tasks/:id", (req, res) => {
   if (task) {
     res.json(task);
   } else {
-    res.status(404).send("Task not found.");
+    res.status(404).send("Task not found."); //this is chainable because res.status(404) returns the res object
   }
+});
+
+app.get('/old-tasks-page', (req, res) => {
+  res.redirect(301, '/tasks'); // 301 = Permanent Redirect
 });
 
 app.get(/.*report$/, (req, res) => {
