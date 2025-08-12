@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>FIT2095-Todo App</title>
+</head>
+<body>
+    <h1>Welcome to the FIT2095-Todo App</h1>
+    <p>See all tasks at <a href="/tasks">/tasks</a>.</p>
+    <button id="addTaskBtn">Add a Random Task</button>
+    <p id="message"></p>
+    <script>
+        const addTaskBtn = document.getElementById('addTaskBtn');
+        const message = document.getElementById('message');
+        addTaskBtn.addEventListener('click', () => {
+            fetch('/tasks/add-random')
+                .then(response => response.json())
+                .then(data => {
+                    message.textContent = `Success! Added: "${data.description}". View all tasks to see it.`;
+                })
+                .catch(err => {
+                    message.textContent = 'Error adding task.';
+                    console.error(err);
+                });
+        });
+    </script>
+</body>
+</html>
