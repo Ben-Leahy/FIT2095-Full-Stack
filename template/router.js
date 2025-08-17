@@ -44,7 +44,7 @@ router.get("/", (req, res) => {
 
 // Extracing from the request query
 // there is no index.html because we are just returning a json object
-router.get("/tasks", (req, res) => { // This assumes a query string like ?priority=high. We could also do "/tasks/:priority" to get the priority from the URL.
+router.get("/tasks", (req, res) => { // "/tasks" for URL like ?priority=high. "/tasks/:priority" for URL like: "/tasks/high"
   const { priority } = req.query; // Destructure priority from req.query. Ie if there is a query string like ?priority=high, priority will be "high"
     // let priority = req.query.priority; // Another way to destructure the query string
   if (priority) {
