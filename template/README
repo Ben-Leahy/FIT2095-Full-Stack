@@ -11,3 +11,14 @@ Notably:
 4. Matching optional parameters
 5. Matching redirect page
 6. random number generation
+7. For tables, see week3 lab_part1 views info.html
+
+Array functions javascript:
+filter() -> filter((elem) => condition) -> returns a shallow copy based on condition
+findIndex() -> findIndex((elem) => condition) -> returns first index where elem matches condition
+push() -> push(newElem) -> adds newElem to the end of the arrau
+splice() -> splice(startIndex, numElemsToDelete, optionalReplacement) -> myArray.splice(indexOfElem, 1) -> can delete, replace or add elements. It's a mutating method.
+
+Iterations
+for (let i = 0; i < db.length; i++) {}
+for (const elem of array){}
