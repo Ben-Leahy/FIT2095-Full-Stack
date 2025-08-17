@@ -1,0 +1,13 @@
+This is a template to help streamline the process of making new functions
+To start:
+npm init -y
+npm install express
+node main.js
+
+Notably:
+1. Create website
+2. Use router
+3. Button on website
+4. Matching optional parameters
+5. Matching redirect page
+6. random number generation
