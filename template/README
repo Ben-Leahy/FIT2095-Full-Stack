@@ -13,6 +13,9 @@ Notably:
 6. random number generation
 7. For tables, see week3 lab_part1 views info.html
 
+# Other tips:
+The connection doesn't work with https://localhost, only http://localhost
+
 Array functions javascript:
 filter() -> filter((elem) => condition) -> returns a shallow copy based on condition
 findIndex() -> findIndex((elem) => condition) -> returns first index where elem matches condition
