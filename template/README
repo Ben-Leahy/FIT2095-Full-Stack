@@ -13,6 +13,9 @@ Notably:
 6. random number generation
 7. For tables, see week3 lab_part1 views info.html
 
+EJS: embedded javascript. A webpage rendering engine. TODO: this isn't in the template yet.
+
+
 # Other tips:
 The connection doesn't work with https://localhost, only http://localhost
 
