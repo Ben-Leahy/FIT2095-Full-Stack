@@ -72,7 +72,7 @@ router.get("/tasks/add-random", (req, res) => {
 });
 
 // Regex route to catch all other requests and redirect them
-router.get(/.*/, (req, res) => {
+router.get(/.*/, (req, res) => { // or router.get("*", (req, res) => {
   res.redirect(301, "/views/redirect-page"); // 301 = Permanent Redirect
 });
 
