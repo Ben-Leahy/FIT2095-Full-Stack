@@ -1,0 +1,56 @@
+const express = require("express");
+const ejs = require("ejs");
+const path = require("path");
+
+const app = express();
+const PORT_NUMBER = 8081;
+
+app.listen(PORT_NUMBER, () => {
+	console.log(`Listening on port ${PORT_NUMBER}`);
+});
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public/imgs"));
+app.use(express.static("public/css"));
+
+// Configure Express for EJS
+app.engine("html", ejs.renderFile);
+app.set("view engine", "html");
+
+app.get("/", function (req, res) {
+	res.sendFile(path.join(__dirname, "views/index.html"));
+});
+
+app.get("/", function (req, res) {
+	res.sendFile(path.join(__dirname, "views/index.html"));
+});
+app.get("/addition", function (req, res) {
+	res.sendFile(path.join(__dirname, "views/addition.html"));
+});
+app.get("/subtraction", function (req, res) {
+	res.sendFile(path.join(__dirname, "views/subtraction.html"));
+});
+app.post("/addition", function (req, res) {
+	let obj = req.body;
+	let n1 = obj.no1;
+	let n2 = obj.no2;
+	let result = parseInt(n1) + parseInt(n2);
+	res.render("result", { no1: n1, no2: n2, result: result, op: "+" });
+});
+app.post("/subtraction", function (req, res) {
+	let obj = req.body;
+	let n1 = obj.no1;
+	let n2 = obj.no2;
+	let result = parseInt(n1) - parseInt(n2);
+	res.render("result", { no1: n1, no2: n2, result: result, op: "-" });
+});
+// // NOTE: In Express 5, this may throw an error with the stricter route matcher
+// // Use app.get(/.*/,.......) instead 
+// app.get("*", function (req, res) {
+//     res.sendFile(path.join(__dirname, "views/404.html")); 
+// });
+
+// Works for all HTTP methods and avoids issues with the new route parser
+app.use((req, res) => {
+    res.status(404).sendFile(path.join(__dirname, "views/404.html")); 
+});
