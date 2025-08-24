@@ -1,0 +1,84 @@
+<!-- Include the header partial and pass the page title -->
+<!-- In the comments, we’ve added a space after < so the EJS parser ignores it. In real code, there’s no space-->
+<!-- The < %- tag outputs unescaped HTML (needed for partials) -->
+<%- include('partials/header', {title: 'Student Registry'}) %>
+
+<h1>Student Registry</h1>
+
+<!-- Bootstrap grid system: 12 columns total -->
+<div class="row">
+    <!-- Left side: Student list (8 columns on medium+ screens) -->
+    <div class="col-md-8">
+        <h2>All Students</h2>
+        
+        <!-- Conditional rendering: Check if students array is empty -->
+        <!-- The < % tag executes JavaScript without outputting -->
+        <% if (students.length === 0) { %>
+            <!-- Show this message when no students exist -->
+            <p class="text-muted">No students registered yet.</p>
+        <% } else { %>
+            <!-- Display students in a Bootstrap table -->
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Loop through the students array -->
+                    <!-- forEach is a JavaScript array method -->
+                    <% students.forEach(student => { %>
+                        <tr>
+                            <!-- Use < %= to output escaped data (safe from XSS) -->
+                            <!-- Each student object has name, age, and address properties -->
+                            <td><%= student.name %></td>
+                            <td><%= student.age %></td>
+                            <td><%= student.address %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } %>
+    </div>
+    
+    <!-- Right side: Add student form (4 columns on medium+ screens) -->
+    <div class="col-md-4">
+        <h2>Add New Student</h2>
+        
+        <!-- HTML form that sends data to /add-student route -->
+        <!-- method="POST" sends data in request body (not URL) -->
+        <form action="/add-student" method="POST">
+            
+            <!-- Name input field -->
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <!-- name attribute is crucial - it becomes the key in req.body -->
+                <!-- required attribute provides HTML5 validation -->
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            
+            <!-- Age input field -->
+            <div class="mb-3">
+                <label for="age" class="form-label">Age</label>
+                <!-- type="number" provides numeric input with arrows -->
+                <input type="number" class="form-control" id="age" name="age" required>
+            </div>
+            
+            <!-- Address textarea field -->
+            <div class="mb-3">
+                <label for="address" class="form-label">Address</label>
+                <!-- textarea allows multi-line input -->
+                <!-- rows="2" sets initial height -->
+                <textarea class="form-control" id="address" name="address" rows="2" required></textarea>
+            </div>
+            
+            <!-- Submit button - triggers form submission -->
+            <button type="submit" class="btn btn-primary">Add Student</button>
+        </form>
+    </div>
+</div>
+
+<!-- Include the footer partial to close the HTML structure -->
+<%- include('partials/footer') %>
