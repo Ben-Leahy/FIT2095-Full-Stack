@@ -1,51 +1,23 @@
-// ============================================
-// DEPENDENCIES AND SETUP
-// ============================================
 
-// Import Express framework
 const express = require('express');
-
-// Create Express application instance
 const app = express();
 
-// Define server port (use environment variable in production)
 const port = process.env.PORT || 3000;
-
-// ============================================
-// DATA STORAGE (In-Memory Database)
-// ============================================
-
-// Array to store student records
-// In production, this would be replaced with a real database
 let students = [
     // Sample data for demonstration
-    { name: 'John Doe', age: 20, address: '123 Main St' },
-    { name: 'Jane Smith', age: 22, address: '456 Oak Ave' }
+    { id: 1, name: 'John Doe', age: 20, address: '123 Main St' },
+    { id: 3, name: 'Jane Smith', age: 22, address: '456 Oak Ave' }
 ];
 
-// ============================================
-// VIEW ENGINE CONFIGURATION
-// ============================================
-
-// Set EJS as the templating engine
-// This allows us to use .ejs files for dynamic HTML generation
 app.set('view engine', 'ejs');
-
-// Specify the directory containing view templates
-// Express will look for .ejs files in the ./views folder
 app.set('views', './views');
-
-// ============================================
-// MIDDLEWARE CONFIGURATION
-// ============================================
-
-// Parse URL-encoded bodies from HTML forms
-// extended: true allows parsing of nested objects
 app.use(express.urlencoded({ extended: true }));
-
-// Serve static files (CSS, JavaScript, images)
-// Files in the 'public' folder will be accessible directly
 app.use(express.static('public'));
+
+function generateUniqueId() {
+    // Generate a unique ID based on the current timestamp and a random number
+    return Math.floor(Math.random() * Date.now())
+}
 
 // ============================================
 // ROUTES (Request Handlers)
@@ -77,6 +49,7 @@ app.post('/add-student', (req, res) => {
     if (name && age && address) {
         // Create new student object
         students.push({
+            id: generateUniqueId(), // Generate a unique ID for the student
             name: name.trim(),        // Remove extra whitespace
             age: parseInt(age),       // Convert string to integer
             address: address.trim()   // Remove extra whitespace
@@ -91,6 +64,22 @@ app.post('/add-student', (req, res) => {
     // This follows the POST-Redirect-GET pattern
     res.redirect('/');
 });
+
+app.post('/remove-student/:id', (req, res) => {
+    const id = Number(req.params.id);
+    console.log(`Removing student with ID: ${id}`);
+    
+    indexOfStudentToRemove = students.findIndex(student => student.id === id);
+    console.log(indexOfStudentToRemove);
+    if (indexOfStudentToRemove !== -1) {
+        const removedStudent = students[indexOfStudentToRemove];
+        students.splice(indexOfStudentToRemove, 1);
+        console.log(`Student removed: ${removedStudent.name}`);
+    }
+
+    res.redirect('/');
+});
+
 
 // CLEAR ALL STUDENTS ROUTE (Optional)
 // Method: POST
