@@ -22,6 +22,16 @@ There is information on the page for required software, linked installation of M
 
 To run a javascript file, use "node app.js"
 To run online:https://onecompiler.com/javascript
+Bootstrap resources:
+- https://getbootstrap.com/docs/4.1/components/forms/ 
+- https://getbootstrap.com/docs/4.0/components/input-group/
+- https://getbootstrap.com/docs/4.0/components/card/
+
+HTML resources:
+- https://medium.com/@sergimarquez/8-best-practices-to-write-clean-html-code-1cd407e2a7ec
+
+JQuery filtering:
+- https://www.w3schools.com/jquery/jquery_traversing_filtering.asp
 
 ## Shortcuts
 

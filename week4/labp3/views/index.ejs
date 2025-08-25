@@ -1,16 +1,24 @@
-<!-- Include the header partial and pass the page title -->
-<!-- In the comments, we’ve added a space after < so the EJS parser ignores it. In real code, there’s no space-->
-<!-- The < %- tag outputs unescaped HTML (needed for partials) -->
 <%- include('partials/header', {title: 'Student Registry'}) %>
 
-<h1>Student Registry</h1>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<link href="/bootstrap.min.css" rel="stylesheet" />
 
+<h1>Student Registry</h1>
 <!-- Bootstrap grid system: 12 columns total -->
 <div class="row">
     <!-- Left side: Student list (8 columns on medium+ screens) -->
     <div class="col-md-8">
         <h2>All Students</h2>
-        
+        <!-- <script> 
+            studentsFiltered = students; 
+            studentsFiltered = studentsFiltered.filter(student => {
+                return student.name.toLowerCase().includes(document.getElementById('searchBar').value.toLowerCase());
+            });
+        </script> -->
+
+        <!-- Search Bar-->
+        <input type="text" id = "searchBar" class="form-control search-input" placeholder="Search..."><br>
+            
         <!-- Conditional rendering: Check if students array is empty -->
         <!-- The < % tag executes JavaScript without outputting -->
         <% if (students.length === 0) { %>
@@ -27,7 +35,7 @@
                         <th>Address</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id = studentTable>
                     <!-- Loop through the students array -->
                     <!-- forEach is a JavaScript array method -->
                     <% students.forEach(student => { %>
@@ -47,10 +55,25 @@
                         </tr>
                     <% }) %>
                 </tbody>
+            
             </table>
         <% } %>
     </div>
-    
+
+<!-- Script to filter table based on search-->
+<!-- -->
+<script>
+$(document).ready(function(){ //load the html function, once it is fully loaded
+  $("#searchBar").on("keyup", function() {
+    var searchName = this.value.toLowerCase();
+    $("#studentTable tr").filter(function() {
+      const studentName = $(this).text().toLowerCase()
+      $(this).toggle(studentName.indexOf(searchName) > -1) // if the searchName is contained within studentName then show element, otherwise hide. HTML rendering will handle the rest
+    }); 
+  });
+});
+</script>
+
     <!-- Right side: Add student form (4 columns on medium+ screens) -->
     <div class="col-md-4">
         <h2>Add New Student</h2>
