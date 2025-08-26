@@ -1,0 +1,31 @@
+<html>
+	<head>
+        <h1>Create Rental</h1>
+        <body>Ben Leahy 33862214</body> <br />
+		<a href="/">Home</a> <br /> <br />
+	</head>
+                    <th>Rental ID</th>
+                    <th>Book Title</th>
+                    <th>Renter's Name</th>
+                    <th>Days rented</th>
+<body>
+    <form action="/ben/rentals/create" method="POST">
+        <table>
+            <tr>
+                <td> <label>Book Title</label></td>
+                <td> <input type="text" name="bookTitle" /></td>
+            </tr>
+            <tr>
+                <td> <label> Renter's Name </label></td>
+                <td> <input type="text" name="renterName" /></td>
+            </tr>
+                <td> <label> Days rented </label></td>
+                <td> <input type="number" name="rentalDays" /></td>
+            </tr>
+            <tr>
+                <td> <button>Submit</button></label></td>
+            </tr>
+        </table> 
+    </form>
+</body>
+</html>

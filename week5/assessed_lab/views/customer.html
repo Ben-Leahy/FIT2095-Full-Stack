@@ -1,0 +1,36 @@
+<html>
+	<head>
+        <h1>Customer Report</h1>
+        <body>Ben Leahy 33862214</body> <br />
+        
+		<a href="/">Home</a> <br /> <br />
+	</head>
+
+    <div class="container m-3">
+        <body>This table contains all books this customer is renting.</body> <br />
+        <body>The total rental days is: <%=total_rental_days%></body>
+        <table class="table">
+            <thead class="table-dark">
+                <tr>
+                    <th>Rental ID</th>
+                    <th>Book Title</th>
+                    <th>Renter's Name</th>
+                    <th>Days rented</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% filtered_rentals.forEach(rental=> { %>
+                    <tr>
+                        <!-- Use < %= to output escaped data (safe from XSS) -->
+                        <!-- Each student object has name, age, and address properties -->
+                        <td><%= rental.id %></td>
+                        <td><%= rental.bookTitle %></td>
+                        <td><%= rental.renterName %></td>
+                        <td><%= rental.rentalDays %></td>
+                    <tr>
+                <% }) %>
+            </tbody>
+        </table>
+	</div>
+
+</html>

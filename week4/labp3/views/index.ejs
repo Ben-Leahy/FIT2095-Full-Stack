@@ -41,6 +41,11 @@
                             <td><%= student.age %></td>
                             <td><%= student.address %></td>
                             <td>
+                                <form action="/edit-student/<%= student.id %>" method="POST">
+                                    <button type="submit" class="btn btn-primary">Remove Student</button>
+                                </form>
+                            </td>
+                            <td>
                                 <form action="/remove-student/<%= student.id %>" method="POST">
                                     <button type="submit" class="btn btn-primary">Remove Student</button>
                                 </form>

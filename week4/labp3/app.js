@@ -80,6 +80,20 @@ app.post('/remove-student/:id', (req, res) => {
     res.redirect('/');
 });
 
+app.post('/edit-student/:id', (req, res) => {
+    const id = Number(req.params.id);
+    
+    indexOfStudentToRemove = students.findIndex(student => student.id === id);
+    console.log(indexOfStudentToRemove);
+    if (indexOfStudentToRemove !== -1) {
+        const removedStudent = students[indexOfStudentToRemove];
+        students.splice(indexOfStudentToRemove, 1);
+        console.log(`Student removed: ${removedStudent.name}`);
+    }
+
+    res.redirect('/');
+});
+
 
 // CLEAR ALL STUDENTS ROUTE (Optional)
 // Method: POST
