@@ -33,6 +33,7 @@ HTML resources:
 JQuery filtering:
 - https://www.w3schools.com/jquery/jquery_traversing_filtering.asp
 
+
 ## Shortcuts
 
 Chrome: option, command, arrows.

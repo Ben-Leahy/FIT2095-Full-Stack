@@ -9,12 +9,6 @@
     <!-- Left side: Student list (8 columns on medium+ screens) -->
     <div class="col-md-8">
         <h2>All Students</h2>
-        <!-- <script> 
-            studentsFiltered = students; 
-            studentsFiltered = studentsFiltered.filter(student => {
-                return student.name.toLowerCase().includes(document.getElementById('searchBar').value.toLowerCase());
-            });
-        </script> -->
 
         <!-- Search Bar-->
         <input type="text" id = "searchBar" class="form-control search-input" placeholder="Search..."><br>
@@ -66,7 +60,7 @@
 $(document).ready(function(){ //load the html function, once it is fully loaded
   $("#searchBar").on("keyup", function() {
     var searchName = this.value.toLowerCase();
-    $("#studentTable tr").filter(function() {
+    $("#studentTable tr studentName").filter(function() {
       const studentName = $(this).text().toLowerCase()
       $(this).toggle(studentName.indexOf(searchName) > -1) // if the searchName is contained within studentName then show element, otherwise hide. HTML rendering will handle the rest
     }); 
