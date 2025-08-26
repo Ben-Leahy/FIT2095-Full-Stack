@@ -15,9 +15,13 @@ app.use(express.static("public/css"));
 app.engine("html", ejs.renderFile);
 app.set("view engine", "html");
 
-function generateRandomID(){
-	return Math.floor(Math.random() * 100000);
-} //TODO: this can generate an, ie, 3 digit number. Must be 5
+function generateRandomID(){ //Ensures number is exactly 5 digits
+	num =  Math.floor(Math.random() * Date.now());
+	while (num > 99999){
+		num = Math.floor(num/10);
+	}
+	return num;
+}
 
 rentals = [
 	{ id: 46385, bookTitle: "Rangers Apprentice", renterName: "Ben", rentalDays: 5 },
