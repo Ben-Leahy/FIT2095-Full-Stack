@@ -33,6 +33,18 @@ HTML resources:
 JQuery filtering:
 - https://www.w3schools.com/jquery/jquery_traversing_filtering.asp
 
+## Full- stack take home reflections:
+The most important thing is the actual hard skills. These are improved by the problem solving and the creating. 
+AI: first step being getting ai to fix is problematic -> it has low success rate, and we are not developing our skills while we do this: we are copying code in, writing an instruction, and reading the ouput, only to take time to interpret the instructions, realise it's wrong and start again. Much better approach is to
+1. Study my existing code as if I am explaining it to smomeone who doesn't understand it or a teacher. 
+2. See if I can find any errors from studying it, and ALL RELATED COMPONENTS. This includes reading documentation (which helps actually build our understanding.)
+Make sure we start small, from what we know rather than starting from a template and altering it. 
+
+HTML code:
+- Limit the use of divs and styling in the html document by leaning on the css file -> 
+- <h1>Headline</h1> beats <div class="headline">Headline</div>
+
+
 
 ## Shortcuts
 
