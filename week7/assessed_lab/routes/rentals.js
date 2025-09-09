@@ -27,6 +27,47 @@ router.get("/add", async (req, res) => {
   }
 });
 
+// Again can't test because of the error with the book
+// POST create new rental
+router.post("/add", async (req, res) => {
+  try {
+    const { rentalId, customerName, rentalDays, totalCost, bookId } = req.body;
+
+    const newRental = new Rental({
+      rentalId: rentalId,
+      customerName: customerName,
+      rentalDays: parseInt(rentalDays),
+      totalCost: parseFloat(totalCost), 
+      bookId : bookId, 
+    });
+    console.log(newRental);
+
+    await newRental.save();
+    res.redirect("/ben/rentals");
+  } catch (error) {
+    console.error(error);
+
+    // Handle Mongoose validation errors
+    if (error.name === "ValidationError") {
+      const errors = Object.values(error.errors).map((err) => err.message);
+      return res.status(400).send(`Validation Error: ${errors.join(", ")}`);
+    }
+
+    // Handle duplicate key errors
+    if (error.code === 11000) {
+      const field = Object.keys(error.keyPattern)[0];
+      return res
+        .status(400)
+        .send(
+          `${field.charAt(0).toUpperCase() + field.slice(1)} already exists`
+        );
+    }
+
+    res.status(500).send("Server Error");
+  }
+});
+
+
 //pass in bookIds
 
 module.exports = router;
