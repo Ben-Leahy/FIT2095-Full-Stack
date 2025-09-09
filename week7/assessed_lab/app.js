@@ -22,7 +22,7 @@ app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/
 
 // Routes
 const bookRoutes = require('./routes/books');
-app.use('/books', bookRoutes); // we don't know what this needs to be
+app.use('/ben/books', bookRoutes); // we don't know what this needs to be
 
 // Home route
 app.get('/', (req, res) => {
