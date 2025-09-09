@@ -21,12 +21,12 @@ app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist
 app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')));
 
 // Routes
-const studentRoutes = require('./routes/students');
-app.use('/students', studentRoutes);
+const bookRoutes = require('./routes/books');
+app.use('/books', bookRoutes); // we don't know what this needs to be
 
 // Home route
 app.get('/', (req, res) => {
-    res.redirect('/students');
+    res.render('index');
 });
 
 // Connect to MongoDB and start server

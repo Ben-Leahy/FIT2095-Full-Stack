@@ -34,7 +34,7 @@ const bookSchema = new mongoose.Schema({
 });
 
 // Create indexes for better query performance
-studentSchema.index({ bookId: 1 }); // ascending
+bookSchema.index({ bookId: 1 }); // ascending
 
 const Book = mongoose.model('Book', bookSchema);
 
