@@ -1,0 +1,33 @@
+<%- include('partials/header', { title: 'Add Book' }) %>
+
+<h2>Add New Book</h2>
+
+<form method="POST" action="/ben/books/add">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="bookTitle" class="form-label">book title</label>
+                <input type="text" class="form-control" id="bookTitle" name="bookTitle" required>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="bookAuthor" class="form-label">Book Author</label>
+                <input type="text" class="form-control" id="bookAuthor" name="bookAuthor" required>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="rentalPrice" class="form-label">Rental Price</label>
+                <input type="number" min="0.01" max="999" step="0.01" value="0.01" class="form-control" id="rentalPrice" name="rentalPrice" required>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Add book</button>
+        <!-- <a href="/ben/books/add" class="btn btn-secondary">Cancel</a> -->
+    </div>
+</form>
+
+<%- include('partials/footer') %>

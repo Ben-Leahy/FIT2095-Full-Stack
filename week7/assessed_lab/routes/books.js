@@ -17,4 +17,47 @@ router.get('/', async (req, res) => {
     }
 });
 
+
+// GET add book form
+router.get('/add', (req, res) => {
+    res.render('addBook');
+});
+
+// POST create new student
+router.post('/add', async (req, res) => {
+    try {
+        const { bookTitle, bookAuthor, rentalPrice } = req.body;
+        // bookId = 2145; 
+        // console.log(bookTitle);
+        // Book id should be automatically generated idk what is going wrong. 
+        // Create new student instance
+        const newBook = new Book({
+            bookTitle,
+            bookAuthor,
+            rentalPrice,
+        });
+        console.log(newBook)
+        
+        await newBook.save();
+        res.redirect('/ben/books');
+    } catch (error) {
+        console.error(error);
+        
+        // Handle Mongoose validation errors
+        if (error.name === 'ValidationError') {
+            const errors = Object.values(error.errors).map(err => err.message);
+            return res.status(400).send(`Validation Error: ${errors.join(', ')}`);
+        }
+        
+        // Handle duplicate key errors
+        if (error.code === 11000) {
+            const field = Object.keys(error.keyPattern)[0];
+            return res.status(400).send(`${field.charAt(0).toUpperCase() + field.slice(1)} already exists`);
+        }
+        
+        res.status(500).send('Server Error');
+    }
+});
+
+
 module.exports = router;
