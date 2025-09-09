@@ -24,6 +24,9 @@ app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/
 const bookRoutes = require('./routes/books');
 app.use('/ben/books', bookRoutes); // we don't know what this needs to be
 
+const rentalRoutes = require('./routes/rentals');
+app.use('/ben/rentals', rentalRoutes);
+
 // Home route
 app.get('/', (req, res) => {
     res.render('index');

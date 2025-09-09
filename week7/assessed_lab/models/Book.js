@@ -2,13 +2,13 @@ const mongoose = require("mongoose");
 
 const bookSchema = new mongoose.Schema({
   // Our options are to add a unique ID, or ensure that bookTitle is unique.
-  bookId: {
-    type: String,
-    required: [true, "Book ID is required"],
-    unique: true,
-    trim: true,
-    uppercase: true,
-  },
+//   bookId: {
+//     type: String,
+//     required: [true, "Book ID is required"],
+//     unique: true,
+//     trim: true,
+//     uppercase: true,
+//   },
   bookTitle: {
     type: String,
     required: [true, "Book title is required"],

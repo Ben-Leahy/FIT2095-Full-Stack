@@ -40,8 +40,8 @@ const rentalSchema = new mongoose.Schema({
 });
 
 // Create indexes for better query performance
-studentSchema.index({ bookId: 1 }); // ascending
+// studentSchema.index({ bookId: 1 }); // ascending
 
-const Book = mongoose.model('Book', bookSchema);
+const Rental = mongoose.model('Rental', rentalSchema);
 
-module.exports = Book;
+module.exports = Rental;
