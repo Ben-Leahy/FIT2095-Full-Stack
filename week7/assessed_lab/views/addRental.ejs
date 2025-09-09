@@ -1,0 +1,50 @@
+<%- include('partials/header', { title: 'Add Book' }) %>
+
+<h2>Add New Book</h2>
+
+<form method="POST" action="/ben/rentals/add">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="rentalId" class="form-label">Rental ID</label>
+                <input type="text" class="form-control" id="rentalId" name="rentalId" required>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="customerName" class="form-label">book title</label>
+                <input type="text" class="form-control" id="customerName" name="customerName" required>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="rentalDays" class="form-label">Rental Days</label>
+                <input type="number" min="0" max="365" step="1" value="0" class="form-control" id="rentalDays" name="rentalDays" required>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="totalCost" class="form-label">Total Cost</label>
+                <input type="number" min="0" max="18250" step="0.01" value="0" class="form-control" id="totalCost" name="totalCost" required>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="bookId" class="form-label">Book Id</label>
+                <select class="form-select" name="bookId" id="bookId" aria-label="Default select example"required> 
+                    <option value="" selected disabled>Select book</option>
+							<% bookIds.forEach(bookId => { %>
+								<option value="<%= bookId %>"><%= bookId %></option>
+							<% }) %>
+            </div>
+        </div>
+
+    </div>
+    
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Add book</button>
+        <!-- <a href="/ben/books/add" class="btn btn-secondary">Cancel</a> -->
+    </div>
+</form>
+
+<%- include('partials/footer') %>
