@@ -1,0 +1,24 @@
+<%- include('partials/header.html', { title: 'View Parcels Page' }) %>
+
+<table>
+    <thead>
+        <tr>
+            <th>Parcel ID</th>
+            <th>Sender Name</th>
+            <th>Address</th>
+            <th>Weight</th>
+            <th>Fragile</th>
+        </tr>
+        <% parcels.forEach(parcel => { %>
+            <tr>
+                <td><%= parcel._id %></td>
+                <td><%= parcel.sender %></td>
+                <td><%= parcel.address %></td>
+                <td><%= parcel.weight %></td>
+                <td><%= parcel.fragile %></td>
+            </tr>
+        <% }); %>
+    </thead>
+</table>
+
+<%- include('partials/footer.html') %>

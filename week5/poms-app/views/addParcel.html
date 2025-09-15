@@ -1,0 +1,26 @@
+<%- include('partials/header.html', { title: 'Add Parcel' }) %>
+
+<form action="/parcel/add" method="post">
+    <div>
+        <label for="sender">Sender</label>
+        <input type="text" name="sender" id="sender" required>
+    </div>
+    <div>
+        <label for="address">Parcel Address</label>
+        <input type="text" name="address" id="address" required>
+    </div>
+    <div>
+        <label for="weight">Parcel Weight</label>
+        <input type="number" name="weight" id="weight" required>
+    </div>
+    <div>
+        <label for="fragile">Parcel Fragile</label>
+        <select name="fragile" id="fragile" required>
+            <option value="true">Yes - fragile</option>
+            <option value="true">No - not fragile</option>
+        </select>
+    </div>
+    <button type="submit">Add Parcel</button>
+</form>
+
+<%- include('partials/footer.html') %>

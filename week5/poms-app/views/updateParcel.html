@@ -1,0 +1,36 @@
+<%- include('partials/header.html', { title: 'Delete Parcel Page' }) %>
+
+<form action="/parcel/update" method="POST">
+    <label for="parcels">Choose a parcel to update:</label>
+    <select name="id" id="id">
+        <% parcels.forEach(parcel => { %>
+            <option value="<%= parcel._id %>"><%= parcel._id %> - <%= parcel.sender %></option>
+        <% }) %>
+    </select>
+
+    <div>
+        <label for="sender">Sender</label>
+        <input type="text" name="sender" id="sender" required>
+    </div>
+    <div>
+        <label for="address">Parcel Address</label>
+        <input type="text" name="address" id="address" required>
+    </div>
+    <div>
+        <label for="weight">Parcel Weight</label>
+        <input type="number" name="weight" id="weight" required>
+    </div>
+    <div>
+        <label for="fragile">Parcel Fragile</label>
+        <select name="fragile" id="fragile" required>
+            <option value="true">Yes - fragile</option>
+            <option value="true">No - not fragile</option>
+        </select>
+    </div>
+
+    <p>updateing is permanent</p>
+    <button type="submit">Yes, update</button>
+    <a href="/parcel/update">Cancel</a>
+</form>
+
+<%- include('partials/footer.html') %>

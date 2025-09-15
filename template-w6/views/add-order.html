@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a new order</title>
+</head>
+<body>
+    <form action="/order/add" method="post">
+        <div>
+            <label for="product">Product Name</label>
+            <input type="text" name="product" id="product" required>
+        </div>
+        <div>
+            <label for="quantity">Product Quantity</label>
+            <input type="number" name="quantity" id="quantity" required>
+        </div>
+        <div>
+            <label for="orderDate">Order Date</label>
+            <input type="date" name="orderDate" id="orderDate">
+        </div>
+        <div>
+            <label for="customerId">Customer ID</label>
+            <input type="text" name="customerId" id="customerId">
+        </div>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

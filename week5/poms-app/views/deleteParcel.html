@@ -1,0 +1,16 @@
+<%- include('partials/header.html', { title: 'Delete Parcel Page' }) %>
+
+<form action="/parcel/delete" method="POST">
+    <label for="parcels">Choose a parcel to delete:</label>
+
+    <select name="id" id="id">
+        <% parcels.forEach(parcel => { %>
+            <option value="<%= parcel._id %>"><%= parcel._id %> - <%= parcel.sender %></option>
+        <% }) %>
+    </select>
+    <p>Deleting is permanent</p>
+    <button type="submit">Yes, delete</button>
+    <a href="/parcel/delete">Cancel</a>
+</form>
+
+<%- include('partials/footer.html') %>

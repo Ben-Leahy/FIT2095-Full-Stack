@@ -16,7 +16,7 @@ const bookSchema = new mongoose.Schema({
     minlength: [2, "Book title must be at least 2 characters"],
     maxlength: [50, "Book title cannot exceed 50 characters"],
   },
-  bookAuthur: {
+  bookAuthor: {
     type: String,
     required: [true, "Book authur is required"],
     trim: true,
