@@ -12,10 +12,21 @@ const parcelSchema = new mongoose.Schema({
   weight: {
     type: Number,
     required: [true, "weight is required"],
+    validate: {
+      validator: function (value) {
+        return value > 0 && !isNaN(value);
+      },
+      message: "Weight must be a positive number",
+    },
   },
   fragile: {
     type: Boolean,
     required: [true, "Fragile (true false) is required"],
+    validate: {
+      validator: function (value) {
+        return value === true || value === false;
+      }
+    }
   },
 });
 
