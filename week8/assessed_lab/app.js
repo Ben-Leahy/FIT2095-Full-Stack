@@ -15,16 +15,16 @@ let url = "mongodb://localhost:27017/lab03";
 
 async function connect() {
 	await mongoose.connect(url);
-    console.log("Connected to mongoose");
+    return("Connected to mongoose");
 }
 connect()
     .then(console.log)
-    .catch((err) => {
-	print("unable to connect to Mongoose");
+    .catch((error) => {
+	console.log(`unable to connect to Mongoose: ${error}`);
 });
 
-const orderRouter = require("./routes/orderRoutes");
+const orderRouter = require("./routers/orderRoutes");
 app.use("/ben/orders", orderRouter);
 
-const dishRouter = require("./routes/dishRoutes");
+const dishRouter = require("./routers/dishRoutes");
 app.use("/ben/dishes", dishRouter);
